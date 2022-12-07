@@ -1,0 +1,36 @@
+nav { 
+  display: flex;
+  height: 120px; 
+  background-color: #4056A1 ;
+  color: #FFFFFF; 
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em; 
+  justify-content: space-between; 
+  position: fixed; 
+  width: 100%; 
+  top: 0%;
+  font-family: 'Bungee', cursive; 
+
+} 
+
+/* span { 
+  font-family: 'Bungee', cursive; 
+}  */
+
+.comment { 
+  font-family: 'Source Sans Pro', sans-serif; 
+  display: flex; 
+  flex-direction: column;
+  font-size: 75%; 
+  align-items: center;
+} 
+
+#image1 {
+  color: red 
+} 
+
+/* p {
+  position: right
+} */

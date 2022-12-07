@@ -14,11 +14,24 @@ html {
  * Global layout stuff
  */
 
-body {
+body::before {
+  /* color: #545149; */
+  /* background-color: #f4f1ec;
+  font-size: 24px; 
+  font-family: 'Source Sans Pro', sans-serif; */
+  display: block; 
+  content: ''; 
+  height: 120px;
+} 
+
+
+.container {
+  width: 90%; 
   color: #545149;
-  background-color: #f4f1ec;
-  font-size: 24px;
+  margin: auto; 
 }
+
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

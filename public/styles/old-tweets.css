@@ -1,0 +1,37 @@
+article{
+  border: solid; 
+
+}  
+article:hover {
+  box-shadow: 5px 10px; 
+  /* color:lavender; */
+
+} 
+#footer-pic1:hover{
+  background-color: gold;
+} 
+#footer-pic2:hover{
+  background-color: gold;
+} 
+#footer-pic3:hover{
+  background-color: gold;
+}
+.tweet-header {
+  display: flex;
+  justify-content: space-between; 
+  margin: 15px;  
+}  
+footer{
+  display: flex;
+  justify-content: space-between; 
+  margin: 10px;  
+} 
+.older-tweets {
+  width: 95%; 
+  margin-left: 20px; 
+  border: none; 
+  border-bottom: solid; 
+  margin-bottom: 5px; 
+  padding-bottom: 20px;
+
+}
