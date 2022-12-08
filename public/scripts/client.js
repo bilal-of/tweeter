@@ -9,17 +9,22 @@ $(document).ready(function() {
     event.preventDefault();  
     const length = $('textarea').val().length; 
     if (length === 0) {
-      alert('This is an empty Tweet') 
+      document.getElementById('error1').classList.remove('hide')
+      $('.error1').slideDown(); 
       return
-    } else if (length > 140) {
-      alert('This Tweet exceeds the limit') 
+    } else if (length > 140) { 
+      document.getElementById('error2').classList.remove('hide')
+      $('.error2').slideDown() 
       return
     } 
-    
     $.ajax({
       method: 'POST', 
       data: $(this).serialize(), 
-      url: '/tweets'
+      url: '/tweets', 
+      success: function() { 
+        $('form')[0].reset();
+        loadTweets();
+      }
     }) 
   }) 
   const loadTweets = function() {
@@ -32,41 +37,47 @@ $(document).ready(function() {
       }
     }) 
   } 
-  loadTweets()
+  loadTweets() 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }; 
+
+  const renderTweets = function(tweets) {
+    // loops through tweets 
+    for (let tweet of tweets) {
+      // calls createTweetElement for each tweet
+      // takes return value and appends it to the tweets container
+      $('#tweets-container').prepend(createTweetElement(tweet));
+    }
+  }
+    
+  const createTweetElement = function(tweet) {
+  
+    const element = `
+    <article class="tweet-container"> 
+            <header class="tweet-header">
+              <div class = 'user'> 
+                <span><img src=${escape(tweet.user.avatars)}></img></span>
+                <span class = 'name'> ${escape(tweet.user.name)} </span>  
+              </div> 
+              <span class = 'username'> ${escape(tweet.user.handle)} </span>  
+            </header> 
+            <p class="older-tweets"> ${escape(tweet.content.text)}</p> 
+            <footer> 
+              <span class = 'date'> ${timeago.format(escape(tweet.created_at))} </span>
+              <div class = 'user'> 
+                <span><i id = 'footer-pic1' class="fa-solid fa-flag"></i></span>
+                <span><i id = 'footer-pic2' class="fa-solid fa-retweet"></i></span> 
+                <span><i id = 'footer-pic3' class="fa-solid fa-heart"></i></span>
+              </div> 
+            </footer>
+          </article>
+    ` 
+    return element;
+    } 
+    
+    
 }); 
-
-
-const renderTweets = function(tweets) {
-// loops through tweets 
-for (let tweet of tweets) {
-  // calls createTweetElement for each tweet
-  // takes return value and appends it to the tweets container
-  $('#tweets-container').prepend(createTweetElement(tweet));
-}
-}
-
-const createTweetElement = function(tweet) {
-
-  const element = `
-  <article class="tweet-container"> 
-          <header class="tweet-header">
-            <div class = 'user'> 
-              <span><img src=${tweet.user.avatars}></img></span>
-              <span class = 'name'> ${tweet.user.name} </span>  
-            </div> 
-            <span class = 'username'> ${tweet.user.handle} </span>  
-          </header> 
-          <p class="older-tweets"> ${tweet.content.text}</p> 
-          <footer> 
-            <span class = 'date'> ${timeago.format(tweet.created_at)} </span>
-            <div class = 'user'> 
-              <span><i id = 'footer-pic1' class="fa-solid fa-angles-down"></i></span>
-              <span><i id = 'footer-pic2' class="fa-solid fa-angles-down"></i></span> 
-              <span><i id = 'footer-pic3' class="fa-solid fa-angles-down"></i></span>
-            </div> 
-          </footer>
-        </article>
-  ` 
-  return element;
- } 
 

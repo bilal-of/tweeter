@@ -24,3 +24,28 @@ button{
 .red {
   color: red;
 } 
+.hide{
+  display: none;
+} 
+
+.error1{ 
+  padding: 10px;
+  border: 3px solid; 
+  color: #D8000C;
+  border-color: #D8000C; 
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+
+
+} 
+.error2{  
+  padding: 10px;
+  border: 3px solid; 
+  color: #D8000C;
+  border-color: #D8000C; 
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center; 
+
+
+
+}

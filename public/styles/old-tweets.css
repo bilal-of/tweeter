@@ -9,13 +9,13 @@ article:hover {
 
 } 
 #footer-pic1:hover{
-  background-color: gold;
+  color: gold;
 } 
 #footer-pic2:hover{
-  background-color: gold;
+  color: gold;
 } 
 #footer-pic3:hover{
-  background-color: gold;
+  color: gold;
 }
 .tweet-header {
   display: flex;
@@ -35,4 +35,4 @@ footer{
   margin-bottom: 5px; 
   padding-bottom: 20px;
 
-}
+} 
