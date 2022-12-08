@@ -1,6 +1,7 @@
 article{
-  border: solid; 
-
+  border: solid;   
+  margin: 20px
+  
 }  
 article:hover {
   box-shadow: 5px 10px; 
