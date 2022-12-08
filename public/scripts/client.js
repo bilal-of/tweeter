@@ -5,49 +5,43 @@
  */ 
 $(document).ready(function() { 
   console.log('client.js ready')
-  renderTweets(data); 
   $('form').on('submit', function(event){
-    event.preventDefault();
+    event.preventDefault();  
+    const length = $('textarea').val().length; 
+    if (length === 0) {
+      alert('This is an empty Tweet') 
+      return
+    } else if (length > 140) {
+      alert('This Tweet exceeds the limit') 
+      return
+    } 
+    
     $.ajax({
       method: 'POST', 
       data: $(this).serialize(), 
       url: '/tweets'
     }) 
-  })
+  }) 
+  const loadTweets = function() {
+    $.ajax({
+      method: 'GET', 
+      datatype: JSON, 
+      url: '/tweets', 
+      success: function(data){ 
+        renderTweets(data)
+      }
+    }) 
+  } 
+  loadTweets()
 }); 
 
-
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-]
 
 const renderTweets = function(tweets) {
 // loops through tweets 
 for (let tweet of tweets) {
   // calls createTweetElement for each tweet
   // takes return value and appends it to the tweets container
-  $('#tweets-container').append(createTweetElement(tweet));
+  $('#tweets-container').prepend(createTweetElement(tweet));
 }
 }
 
@@ -64,7 +58,7 @@ const createTweetElement = function(tweet) {
           </header> 
           <p class="older-tweets"> ${tweet.content.text}</p> 
           <footer> 
-            <span class = 'date'> 10 days ago </span>
+            <span class = 'date'> ${timeago.format(tweet.created_at)} </span>
             <div class = 'user'> 
               <span><i id = 'footer-pic1' class="fa-solid fa-angles-down"></i></span>
               <span><i id = 'footer-pic2' class="fa-solid fa-angles-down"></i></span> 
