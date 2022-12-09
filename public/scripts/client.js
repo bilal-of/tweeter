@@ -1,20 +1,14 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */ 
 $(document).ready(function() { 
-  console.log('client.js ready')
   $('form').on('submit', function(event){
     event.preventDefault();  
     const length = $('textarea').val().length; 
     if (length === 0) {
-      document.getElementById('error1').classList.remove('hide')
+      document.getElementById('error1').classList.remove('hide');
       $('.error1').slideDown(); 
       return
     } else if (length > 140) { 
-      document.getElementById('error2').classList.remove('hide')
-      $('.error2').slideDown() 
+      document.getElementById('error2').classList.remove('hide');
+      $('.error2').slideDown(); 
       return
     } 
     $.ajax({
@@ -22,7 +16,8 @@ $(document).ready(function() {
       data: $(this).serialize(), 
       url: '/tweets', 
       success: function() { 
-        $('form')[0].reset();
+        $('form')[0].reset(); 
+        $('.counter').text('140'); 
         loadTweets();
       }
     }) 
@@ -45,7 +40,8 @@ $(document).ready(function() {
   }; 
 
   const renderTweets = function(tweets) {
-    // loops through tweets 
+    // loops through tweets  
+    $("#tweets-container").empty();
     for (let tweet of tweets) {
       // calls createTweetElement for each tweet
       // takes return value and appends it to the tweets container
@@ -59,7 +55,7 @@ $(document).ready(function() {
     <article class="tweet-container"> 
             <header class="tweet-header">
               <div class = 'user'> 
-                <span><img src=${escape(tweet.user.avatars)}></img></span>
+                <span><img src="${escape(tweet.user.avatars)}" width="20" height="20" ></img></span>
                 <span class = 'name'> ${escape(tweet.user.name)} </span>  
               </div> 
               <span class = 'username'> ${escape(tweet.user.handle)} </span>  

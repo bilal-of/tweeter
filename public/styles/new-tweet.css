@@ -9,7 +9,7 @@ form{
 } 
 
 button{
-  background-color: #4056A1 ; 
+  background-color: lightcoral ; 
   color: #FFFFFF; 
   margin-bottom: 10px;
 
@@ -36,7 +36,6 @@ button{
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center;
 
-
 } 
 .error2{  
   padding: 10px;
@@ -45,7 +44,5 @@ button{
   border-color: #D8000C; 
   font-family: 'Source Sans Pro', sans-serif;
   text-align: center; 
+} 
 
-
-
-}
