@@ -55,14 +55,14 @@ $(document).ready(function() {
     <article class="tweet-container"> 
             <header class="tweet-header">
               <div class = 'user'> 
-                <span><img src="${escape(tweet.user.avatars)}" width="20" height="20" ></img></span>
-                <span class = 'name'> ${escape(tweet.user.name)} </span>  
+                <span><img src="${tweet.user.avatars}" width="20" height="20" ></img></span>
+                <span class = 'name'> ${tweet.user.name} </span>  
               </div> 
-              <span class = 'username'> ${escape(tweet.user.handle)} </span>  
+              <span class = 'username'> ${tweet.user.handle} </span>  
             </header> 
             <p class="older-tweets"> ${escape(tweet.content.text)}</p> 
             <footer> 
-              <span class = 'date'> ${timeago.format(escape(tweet.created_at))} </span>
+              <span class = 'date'> ${timeago.format(tweet.created_at)} </span>
               <div class = 'user'> 
                 <span><i id = 'footer-pic1' class="fa-solid fa-flag"></i></span>
                 <span><i id = 'footer-pic2' class="fa-solid fa-retweet"></i></span> 
